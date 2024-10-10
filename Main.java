@@ -184,7 +184,34 @@ public class Main {
         }
     }
 
+public static void CourseManagement() {
 
+    System.out.println("=====================\n Course Selection \n=====================");
+    System.out.println("Available Courses:");
+    System.out.println("1: Computer Science");
+    System.out.println("2: Information Technology");
+    System.out.println("3: Business Analytics");
+    System.out.println("4: Computer Engineering");
+ 
+    System.out.print("Choose a course (1-4): ");
+    Scanner choice = new Scanner(System.in);
+    int Choice = choice.nextInt();
+     
+    String selectedCourse;
+
+    switch (Choice) {
+        case 1 -> selectedCourse = "Computer Science";
+        case 2 -> selectedCourse = "Information Technology";
+        case 3 -> selectedCourse = "Business Analytics";
+        case 4 -> selectedCourse = "Computer Engineering";
+        default -> {
+            System.out.println("Invalid course selection.");
+            return; 
+        }
+    }
+    System.out.println("Your course is: " + selectedCourse);
+}
+    
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean done = true;
@@ -200,6 +227,7 @@ public class Main {
                 case 1 -> Registration();
                 case 2 -> Grading();
                 case 3 -> GPA_Calculator();
+                case 4 -> CourseManagement();
                 default -> {
                     System.out.println("Invalid Choice, please try again.");
                     done = false;  // Loop again if invalid choice
