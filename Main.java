@@ -184,34 +184,34 @@ public class Main {
         }
     }
 
-public static void CourseManagement() {
+    public static void CourseManagement() {
 
-    System.out.println("=====================\n Course Selection \n=====================");
-    System.out.println("Available Courses:");
-    System.out.println("1: Computer Science");
-    System.out.println("2: Information Technology");
-    System.out.println("3: Business Analytics");
-    System.out.println("4: Computer Engineering");
- 
-    System.out.print("Choose a course (1-4): ");
-    Scanner choice = new Scanner(System.in);
-    int Choice = choice.nextInt();
-     
-    String selectedCourse;
+        System.out.println("=====================\n Course Selection \n=====================");
+        System.out.println("Available Courses:");
+        System.out.println("1: Computer Science");
+        System.out.println("2: Information Technology");
+        System.out.println("3: Business Analytics");
+        System.out.println("4: Computer Engineering");
 
-    switch (Choice) {
-        case 1 -> selectedCourse = "Computer Science";
-        case 2 -> selectedCourse = "Information Technology";
-        case 3 -> selectedCourse = "Business Analytics";
-        case 4 -> selectedCourse = "Computer Engineering";
-        default -> {
-            System.out.println("Invalid course selection.");
-            return; 
+        System.out.print("Choose a course (1-4): ");
+        Scanner choice = new Scanner(System.in);
+        int Choice = choice.nextInt();
+
+        String selectedCourse;
+
+        switch (Choice) {
+            case 1 -> selectedCourse = "Computer Science";
+            case 2 -> selectedCourse = "Information Technology";
+            case 3 -> selectedCourse = "Business Analytics";
+            case 4 -> selectedCourse = "Computer Engineering";
+            default -> {
+                System.out.println("Invalid course selection.");
+                return;
+            }
         }
+        System.out.println("Your course is: " + selectedCourse);
     }
-    System.out.println("Your course is: " + selectedCourse);
-}
-    
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         boolean done = true;
@@ -219,7 +219,7 @@ public static void CourseManagement() {
         // changed from (while) to (do-while)
         do {
             System.out.println("=====================\n Student Portal \n=====================");
-            System.out.println("Choose a system\n1: Registration System\n2: Grading System\n3: GPA Calculator\n:");
+            System.out.println("Choose a system\n1: Registration System\n2: Grading System\n3: GPA Calculator\n4: Course Management\n:");
 
             int selected = sc.nextInt();
 
