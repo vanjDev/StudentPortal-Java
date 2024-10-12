@@ -3,8 +3,19 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         String names [][] = {
-                {"CCS0001", "5"},
-                {"CCS0002", "3"},
+
+                {"CCS0021", "2"},
+                {"CCS0021L", "1"},
+                {"CS0001", "3"},
+                {"CS0003", "2"},
+                {"CS0003L", "1"},
+                {"CS0070", "2"},
+                {"CS0070L", "1"},
+                {"GED0081", "2"},
+                {"GED0081L", "1"},
+                {"GED0021", "3"},
+                {"GED0075", "3"}, 
+        
 
                 {"CCS0101", "3"},
                 {"CS0005", "3"},
