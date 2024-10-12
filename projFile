@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        String names [][] = {
+                {"CCS0001", "5"},
+                {"CCS0002", "3"},
+        };
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("===============");
+
+        for (int i = 0; i < names.length; i++) {
+            for (int j = 0; j < names[i].length; j++) {
+                if (j == 1){
+                    System.out.println("Course Units: " + names[i][j]);
+                    System.out.println("===============");
+                }else{
+                    System.out.print("Course Number: ");
+                    System.out.println(i+1);
+                    System.out.println("Course Code: " + names[i][j]);
+                }
+            }
+        }
+
+        int totalUnits = 0;
+
+        while (true) {
+            System.out.println("Enter course number (or type '-1' to finish): ");
+            int courseNumber = sc.nextInt()-1;
+            if (courseNumber == -2) {
+                break;
+            }
+
+            for (int i = 0; i < names.length; i++) {
+                for (int j = 0; j < names[i].length; j++) {
+                    if (i == courseNumber) {
+                        System.out.println("Added Course: " + names[i][j]);
+                        if (j == 1) {
+                            System.out.println("Added Units: " + names[i][j]);
+                            totalUnits += Integer.parseInt(names[i][j]);
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("Total Units: " + totalUnits);
+    }
+}
