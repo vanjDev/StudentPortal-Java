@@ -184,6 +184,98 @@ public class Main {
         }
     }
 
+    public static void CourseEnrollment() {
+        String names [][] = {
+                // 1st Semester
+                {"CCS0021", "2"},
+                {"CCS0021L", "1"},
+                {"CS0001", "3"},
+                {"CS0003", "2"},
+                {"CS0003L", "1"},
+                {"CS0070", "2"},
+                {"CS0070L", "1"},
+                {"GED0081", "2"},
+                {"GED0081L", "1"},
+                {"GED0021", "3"},
+                {"GED0075", "3"},
+                // 2nd Semester
+                {"CCS0101", "3"},
+                {"CS0005", "3"},
+                {"CS0007", "3"},
+                {"CS0007", "3"},
+                {"CS0010", "3"},
+                {"CS0011", "3"},
+                {"CS0017", "2"},
+                {"CS00017L", "1"},
+                {"CS0021", "3"},
+                // 3rd Semester
+                {"CCS0043", "2"},
+                {"CCS0103", "3"},
+                {"CS0005", "3"},
+                {"CS0013", "3"},
+                {"CS0023", "3"},
+                {"CS0048", "2"},
+                {"GED0031", "3"},
+        };
+        Scanner sc = new Scanner(System.in);
+        System.out.println("=======================");
+
+        for (int i = 0; i < names.length; i++) {
+            for (int j = 0; j < names[i].length; j++) {
+                if (j == 1){
+                    System.out.println("Course Units: " + names[i][j]);
+                    System.out.println("=======================");
+                }else{
+                    System.out.print("Course Number: ");
+                    System.out.println(i+1);
+                    System.out.println("Course Code: " + names[i][j]);
+                }
+            }
+        }
+
+        int totalUnits = 0;
+        int[] availcourse = new int[names.length];
+
+        while (true) {
+            if (totalUnits > 20){
+                System.out.println("Total Units, Enrolled");
+                break;
+            }else{
+                System.out.println("You can only enroll: "+ Integer.toString(21 - totalUnits) + " units left.");
+            }
+            System.out.println("Enter course number (or type '-1' to finish): ");
+            int courseNumber = sc.nextInt() - 1;
+            if (courseNumber == -2) {
+                break;
+            }
+
+            if(availcourse[courseNumber] == 0){
+                availcourse[courseNumber] = 1;
+            }else{
+                System.out.println("Please Try Again!");
+                System.out.println("Duplicate Course Number: " + courseNumber+1);
+                continue;
+            };
+
+            for (int i = 0; i < names.length; i++) {
+                for (int j = 0; j < names[i].length; j++) {
+                    if (i == courseNumber) {
+                        System.out.println("Added Course: " + names[i][j]);
+                        if (j == 1) {
+                            totalUnits += Integer.parseInt(names[i][j]);
+                            if (totalUnits > 21){
+                                System.out.println("Error, Course Overload! ");
+                                continue;
+                            }
+                            System.out.println("Added Units: " + names[i][j]);
+                        }
+                    }
+                }
+            }
+        }
+        System.out.println("Total Units: " + totalUnits);
+    }
+
     public static void CourseManagement() {
 
         System.out.println("=====================\n Course Selection \n=====================");
@@ -219,7 +311,7 @@ public class Main {
         // changed from (while) to (do-while)
         do {
             System.out.println("=====================\n Student Portal \n=====================");
-            System.out.println("Choose a system\n1: Registration System\n2: Grading System\n3: GPA Calculator\n4: Course Management\n:");
+            System.out.println("Choose a system\n1: Registration System\n2: Grading System\n3: GPA Calculator\n4: Course Management\n5: Course Enrollment\n:");
 
             int selected = sc.nextInt();
 
@@ -228,6 +320,7 @@ public class Main {
                 case 2 -> Grading();
                 case 3 -> GPA_Calculator();
                 case 4 -> CourseManagement();
+                case 5 -> CourseEnrollment();
                 default -> {
                     System.out.println("Invalid Choice, please try again.");
                     done = false;  // Loop again if invalid choice
