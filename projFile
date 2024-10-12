@@ -5,6 +5,17 @@ public class Main {
         String names [][] = {
                 {"CCS0001", "5"},
                 {"CCS0002", "3"},
+
+                {"CCS0101", "3"},
+                {"CS0005", "3"},
+                {"CS0007", "3"},
+                {"CS0007", "3"},
+                {"CS0010", "3"},
+                {"CS0011", "3"},
+                {"CS0017", "2"},
+                {"CS00017L", "1"},
+                {"CS0021", "3"},
+
         };
         Scanner sc = new Scanner(System.in);
 
