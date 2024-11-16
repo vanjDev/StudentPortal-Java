@@ -225,6 +225,7 @@ public class SubSystems {
                 }
             };
 
+            System.out.println("Choosen Subject: "+ selectedSubjects);
             GED mySubject = new GED(selectedSubjects, 3);
             mySubject.department_program = selectedCourse;
             mySubject.show();
@@ -270,7 +271,7 @@ public class SubSystems {
                 case 9 -> "NETWORKS AND COMMUNICATIONS 1";
                 case 10 -> "AUTOMATA THEORY AND FORMAL LANGUAGES";
                 case 11 -> "CS SPECIALIZATION 1 (STRUCTURED PROGRAMMING LANGUAGE)";
-                 case 12 -> "MOBILE PROGRAMMING";
+                case 12 -> "MOBILE PROGRAMMING";
                 case 13 -> "NETWORK AND COMMUNICATIONS 2A";
                 case 14 -> "MODELING AND SIMULATION";
                 case 15 -> "SOFTWARE ENGINEERING 1";
@@ -289,6 +290,7 @@ public class SubSystems {
                 }
             };
 
+            System.out.println("Choosen Subject: "+ selectedSubjects);
             CS mySubject = new CS(selectedSubjects, 3);
             mySubject.specialization = choice;
             mySubject.show();
@@ -324,6 +326,8 @@ public class SubSystems {
                     yield null;
                 }
             };
+
+            System.out.println("Choosen Subject: "+ selectedSubjects);
             CCS mySubject = new CCS(selectedSubjects, 3);
             mySubject.isCS = true;
             mySubject.show();
