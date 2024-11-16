@@ -191,6 +191,11 @@ public class SubSystems {
             System.out.println("11: The Contemporary World");
             System.out.println("12: Applied Statistics for CS");
             System.out.println("13: Mathematical Analysis");
+            System.out.println("14: SPECIALIZED ENGLISH PROGRAM 2");
+            System.out.println("15: LINEAR ALGEBRA");
+            System.out.println("16: COLLEGE PHYSICS 1 LECTURE");
+            System.out.println("17: COLLEGE PHYSICS 2 LECTURE");
+            System.out.println("18: PURPOSIVE COMMUNICATION");
 
             System.out.print("Choose a subject (1-13): ");
             int choice3 = sc.nextInt();
@@ -209,6 +214,11 @@ public class SubSystems {
                 case 11 -> "The Contemporary World";
                 case 12 -> "Applied Statistics for CS";
                 case 13 -> "Mathematical Analysis";
+                case 14 -> "SPECIALIZED ENGLISH PROGRAM 2";
+                case 15 -> "LINEAR ALGEBRA";
+                case 16 -> "COLLEGE PHYSICS 1 LECTURE";
+                case 17 -> "COLLEGE PHYSICS 2 LECTURE";
+                case 18 -> "PURPOSIVE COMMUNICATION";
                 default -> {
                     System.out.println("Invalid subject selection.");
                     yield null;
