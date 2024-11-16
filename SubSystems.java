@@ -231,9 +231,21 @@ public class SubSystems {
             System.out.println("9: NETWORKS AND COMMUNICATIONS 1");
             System.out.println("10: AUTOMATA THEORY AND FORMAL LANGUAGES");
             System.out.println("11: CS SPECIALIZATION 1 (STRUCTURED PROGRAMMING LANGUAGE)");
+            System.out.println("12: MOBILE PROGRAMMING");
+            System.out.println("13: NETWORK AND COMMUNICATIONS 2A");
+            System.out.println("14: MODELING AND SIMULATION");
+            System.out.println("15: SOFTWARE ENGINEERING 1");
+            System.out.println("16: CS ELECTIVE - COMPUTER GRAPHICS AND VISUAL COMPUTING");
+            System.out.println("17: CS SPECIALIZATION 2 - PROGRAMMING TOOLS AND TECHNIQUES");
+            System.out.println("18: CS PROJECT MANAGEMENT");
+            System.out.println("19: SOFTWARE ENGINEERING 2");
+            System.out.println("20: PROGRAMMING LANGUAGES");
+            System.out.println("21: CS SPECIALIZATION 3 - IMAGE PROCESSING");
+            System.out.println("22: INFORMATION ASSURANCE AND SECURITY");
+            System.out.println("23: CS PROJECT 1");
+            System.out.println("24: CS SPECIALIZATION 4 - BUSINESS PROCESS FOR COMPUTING");
 
-
-            System.out.print("Choose a subject (1-11): ");
+            System.out.print("Choose a subject (1-24): ");
             int choice3 = sc.nextInt();
 
             String selectedSubjects = switch (choice3) {
@@ -248,7 +260,19 @@ public class SubSystems {
                 case 9 -> "NETWORKS AND COMMUNICATIONS 1";
                 case 10 -> "AUTOMATA THEORY AND FORMAL LANGUAGES";
                 case 11 -> "CS SPECIALIZATION 1 (STRUCTURED PROGRAMMING LANGUAGE)";
-
+                 case 12 -> "MOBILE PROGRAMMING";
+                case 13 -> "NETWORK AND COMMUNICATIONS 2A";
+                case 14 -> "MODELING AND SIMULATION";
+                case 15 -> "SOFTWARE ENGINEERING 1";
+                case 16 -> "CS ELECTIVE - COMPUTER GRAPHICS AND VISUAL COMPUTING";
+                case 17 -> "CS SPECIALIZATION 2 - PROGRAMMING TOOLS AND TECHNIQUES";
+                case 18 -> "CS PROJECT MANAGEMENT";
+                case 19 -> "SOFTWARE ENGINEERING 2";
+                case 20 -> "PROGRAMMING LANGUAGES";
+                case 21 -> "CS SPECIALIZATION 3 - IMAGE PROCESSING";
+                case 22 -> "INFORMATION ASSURANCE AND SECURITY";
+                case 23 -> "CS PROJECT 1";
+                case 24 -> "CS SPECIALIZATION 4 - BUSINESS PROCESS FOR COMPUTING";
                 default -> {
                     System.out.println("Invalid subject selection.");
                     yield null;
