@@ -242,17 +242,23 @@ public class SubSystems {
             mySubject.show();
         } else if (selectedCategory == "CCS - Subjects") {
             System.out.println("Available Subjects:");
-            System.out.println("1: ---");
-            System.out.println("2: ---");
-            System.out.println("3: ---");
+            System.out.println("1: Introduction Computing");
+            System.out.println("2: Computer Programming 1");
+            System.out.println("3: Introduction to Human Computer Interaction");
+            System.out.println("4: Computer Programming 2");
+            System.out.println("5: Data Structures and Algorithms");
+            System.out.println("6: Professional Development (Computing Profession)");
 
-            System.out.print("Choose a subject (1-3): ");
+            System.out.print("Choose a subject (1-6): ");
             int choice3 = sc.nextInt();
 
             String selectedSubjects = switch (choice3) {
-                case 1 -> "";
-                case 2 -> "";
-                case 3 -> "";
+                case 1 -> "Introduction Computing";
+                case 2 -> "Computer Programming 1";
+                case 3 -> "Introduction to Human Computer Interaction";
+                case 4 -> "Computer Programming 2";
+                case 5 -> "Data Structures and Algorithms";
+                case 6 -> "Professional Development (Computing Profession)";
                 default -> {
                     System.out.println("Invalid subject selection.");
                     yield null;
