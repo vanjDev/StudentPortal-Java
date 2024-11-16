@@ -161,6 +161,51 @@ public class SubSystems {
             }
         };
 
+        if (selectedCourse == "Computer Science"){
+            System.out.println("Available Course Category:");
+            System.out.println("1: GED - Subjects");
+            System.out.println("2: ---");
+            System.out.println("3: ---");
+
+            System.out.print("Choose a course (1-3): ");
+            int choice2 = sc.nextInt();
+
+            String selectedSubject = switch (choice2) {
+                case 1 -> "GED - Subjects";
+                case 2 -> "CS - Subjects";
+                case 3 -> "CCS - Subjects";
+                default -> {
+                    System.out.println("Invalid subject selection.");
+                    yield null;
+                }
+            };
+
+
+            if (selectedSubject == "GED - Subjects"){
+                System.out.println("Available Subjects:");
+                System.out.println("1: Specialized English");
+                System.out.println("2: ---");
+                System.out.println("3: ---");
+
+                System.out.print("Choose a subject (1-3): ");
+                int choice3 = sc.nextInt();
+
+                String GEDSubjects = switch (choice3) {
+                    case 1 -> "Specialized English";
+                    case 2 -> "---";
+                    case 3 -> "---";
+                    default -> {
+                        System.out.println("Invalid subject selection.");
+                        yield null;
+                    }
+                };
+                if (GEDSubjects == "Specialized English"){
+                    GED mySubject = new GED("Specialized English", 3);
+                    mySubject.show();
+                }
+            }
+        }
+
         if (selectedCourse != null) {
             System.out.println("You have selected the course: " + selectedCourse);
         }
