@@ -220,17 +220,35 @@ public class SubSystems {
             mySubject.show();
         } else if (selectedCategory == "CS - Subjects") {
             System.out.println("Available Subjects:");
-            System.out.println("1: ---");
-            System.out.println("2: ---");
-            System.out.println("3: ---");
+            System.out.println("1: DISCRETE STRUCTURES 1");
+            System.out.println("2: COMPUTER SYSTEMS & ARCHITECTURE");
+            System.out.println("3: OBJECT ORIENTED PROGRAMMING");
+            System.out.println("4: ALGORITHM");
+            System.out.println("5: FUNDAMENTALS OF ANALYTICS");
+            System.out.println("6: OPERATING SYSTEM");
+            System.out.println("7: DISCRETE STRUCTURES 2");
+            System.out.println("8: DATABASE SYSTEMS");
+            System.out.println("9: NETWORKS AND COMMUNICATIONS 1");
+            System.out.println("10: AUTOMATA THEORY AND FORMAL LANGUAGES");
+            System.out.println("11: CS SPECIALIZATION 1 (STRUCTURED PROGRAMMING LANGUAGE)");
 
-            System.out.print("Choose a subject (1-3): ");
+
+            System.out.print("Choose a subject (1-11): ");
             int choice3 = sc.nextInt();
 
             String selectedSubjects = switch (choice3) {
-                case 1 -> "";
-                case 2 -> "";
-                case 3 -> "";
+                case 1 -> "DISCRETE STRUCTURES 1";
+                case 2 -> "COMPUTER SYSTEMS & ARCHITECTURE";
+                case 3 -> "OBJECT ORIENTED PROGRAMMING";
+                case 4 -> "ALGORITHM";
+                case 5 -> "FUNDAMENTALS OF ANALYTICS";
+                case 6 -> "OPERATING SYSTEM";
+                case 7 -> "DISCRETE STRUCTURES 2";
+                case 8 -> "DATABASE SYSTEMS";
+                case 9 -> "NETWORKS AND COMMUNICATIONS 1";
+                case 10 -> "AUTOMATA THEORY AND FORMAL LANGUAGES";
+                case 11 -> "CS SPECIALIZATION 1 (STRUCTURED PROGRAMMING LANGUAGE)";
+
                 default -> {
                     System.out.println("Invalid subject selection.");
                     yield null;
@@ -248,6 +266,10 @@ public class SubSystems {
             System.out.println("4: Computer Programming 2");
             System.out.println("5: Data Structures and Algorithms");
             System.out.println("6: Professional Development (Computing Profession)");
+            System.out.println("7: INFORMATION MANAGEMENT (LEC)");
+            System.out.println("8: DESIGN THINKING (CCS)");
+            System.out.println("9: APPLICATIONS DEVELOPMENT AND EMERGING TECHNOLOGIES (LEC)");
+            System.out.println("10: TECHNOPRENEURSHIP (CCS)");
 
             System.out.print("Choose a subject (1-6): ");
             int choice3 = sc.nextInt();
@@ -259,6 +281,10 @@ public class SubSystems {
                 case 4 -> "Computer Programming 2";
                 case 5 -> "Data Structures and Algorithms";
                 case 6 -> "Professional Development (Computing Profession)";
+                case 7 -> "INFORMATION MANAGEMENT (LEC)";
+                case 8 -> "DESIGN THINKING (CCS)";
+                case 9 -> "APPLICATIONS DEVELOPMENT AND EMERGING TECHNOLOGIES (LEC)";
+                case 10 -> "TECHNOPRENEURSHIP (CCS)";
                 default -> {
                     System.out.println("Invalid subject selection.");
                     yield null;
