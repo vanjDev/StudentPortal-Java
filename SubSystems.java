@@ -141,71 +141,109 @@ public class SubSystems {
 
     public void courseManagement() {
         System.out.println("=====================\n Course Selection \n=====================");
-        System.out.println("Available Courses:");
-        System.out.println("1: Computer Science");
-        System.out.println("2: Information Technology");
-        System.out.println("3: Business Analytics");
-        System.out.println("4: Computer Engineering");
+        System.out.println("Computer Science: ");
+        System.out.println("Available Specialization:");
+        System.out.println("1: Software Engineering");
+        System.out.println("2: Artificial Intelligence");
+        System.out.println("3: Data Science");
 
-        System.out.print("Choose a course (1-4): ");
+        System.out.print("Choose a course (1-3): ");
         int choice = sc.nextInt();
 
         String selectedCourse = switch (choice) {
-            case 1 -> "Computer Science";
-            case 2 -> "Information Technology";
-            case 3 -> "Business Analytics";
-            case 4 -> "Computer Engineering";
+            case 1 -> "Software Engineering";
+            case 2 -> "Artificial Intelligence";
+            case 3 -> "Data Science";
             default -> {
                 System.out.println("Invalid course selection.");
                 yield null;
             }
         };
 
-        if (selectedCourse == "Computer Science"){
-            System.out.println("Available Course Category:");
-            System.out.println("1: GED - Subjects");
+        System.out.println("1: GED - Subjects");
+        System.out.println("2: CS - Subjects");
+        System.out.println("3: CCS - Subjects");
+
+        System.out.print("Choose a course (1-3): ");
+        int choice2 = sc.nextInt();
+
+        String selectedCategory = switch (choice2) {
+            case 1 -> "GED - Subjects";
+            case 2 -> "CS - Subjects";
+            case 3 -> "CCS - Subjects";
+            default -> {
+                System.out.println("Invalid Course Category selection.");
+                yield null;
+            }
+        };
+        if (selectedCategory == "GED - Subjects"){
+            System.out.println("Available Subjects:");
+            System.out.println("1: ---");
             System.out.println("2: ---");
             System.out.println("3: ---");
 
-            System.out.print("Choose a course (1-3): ");
-            int choice2 = sc.nextInt();
+            System.out.print("Choose a subject (1-3): ");
+            int choice3 = sc.nextInt();
 
-            String selectedSubject = switch (choice2) {
-                case 1 -> "GED - Subjects";
-                case 2 -> "CS - Subjects";
-                case 3 -> "CCS - Subjects";
+            String selectedSubjects = switch (choice3) {
+                case 1 -> "";
+                case 2 -> "";
+                case 3 -> "";
                 default -> {
                     System.out.println("Invalid subject selection.");
                     yield null;
                 }
             };
 
+            GED mySubject = new GED(selectedSubjects, 3);
+            mySubject.department_program = selectedCourse;
+            mySubject.show();
+        } else if (selectedCategory == "CS - Subjects") {
+            System.out.println("Available Subjects:");
+            System.out.println("1: ---");
+            System.out.println("2: ---");
+            System.out.println("3: ---");
 
-            if (selectedSubject == "GED - Subjects"){
-                System.out.println("Available Subjects:");
-                System.out.println("1: Specialized English");
-                System.out.println("2: ---");
-                System.out.println("3: ---");
+            System.out.print("Choose a subject (1-3): ");
+            int choice3 = sc.nextInt();
 
-                System.out.print("Choose a subject (1-3): ");
-                int choice3 = sc.nextInt();
-
-                String GEDSubjects = switch (choice3) {
-                    case 1 -> "Specialized English";
-                    case 2 -> "---";
-                    case 3 -> "---";
-                    default -> {
-                        System.out.println("Invalid subject selection.");
-                        yield null;
-                    }
-                };
-                if (GEDSubjects == "Specialized English"){
-                    GED mySubject = new GED("Specialized English", 3);
-                    mySubject.show();
+            String selectedSubjects = switch (choice3) {
+                case 1 -> "";
+                case 2 -> "";
+                case 3 -> "";
+                default -> {
+                    System.out.println("Invalid subject selection.");
+                    yield null;
                 }
-            }
-        }
+            };
 
+            CS mySubject = new CS(selectedSubjects, 3);
+            mySubject.specialization = choice;
+            mySubject.show();
+        } else if (selectedCategory == "CCS - Subjects") {
+            System.out.println("Available Subjects:");
+            System.out.println("1: ---");
+            System.out.println("2: ---");
+            System.out.println("3: ---");
+
+            System.out.print("Choose a subject (1-3): ");
+            int choice3 = sc.nextInt();
+
+            String selectedSubjects = switch (choice3) {
+                case 1 -> "";
+                case 2 -> "";
+                case 3 -> "";
+                default -> {
+                    System.out.println("Invalid subject selection.");
+                    yield null;
+                }
+            };
+            CCS mySubject = new CCS(selectedSubjects, 3);
+            mySubject.isCS = true;
+            mySubject.show();
+        }else{
+            System.out.println("Invalid course selection.");
+        }
         if (selectedCourse != null) {
             System.out.println("You have selected the course: " + selectedCourse);
         }
