@@ -178,17 +178,37 @@ public class SubSystems {
         };
         if (selectedCategory == "GED - Subjects"){
             System.out.println("Available Subjects:");
-            System.out.println("1: ---");
-            System.out.println("2: ---");
-            System.out.println("3: ---");
+            System.out.println("1: Specialized English 1");
+            System.out.println("2: Physical Education 1");
+            System.out.println("3: Personal and Professional Effectiveness");
+            System.out.println("4: Readings in Philippines History");
+            System.out.println("5: Science, Technology and Society");
+            System.out.println("6: Physical Education 2");
+            System.out.println("7: Mathematics in the Modern World");
+            System.out.println("8: Analytical Geometry with Calculus");
+            System.out.println("9: Art Appreciation");
+            System.out.println("10: Physical Education 3");
+            System.out.println("11: The Contemporary World");
+            System.out.println("12: Applied Statistics for CS");
+            System.out.println("13: Mathematical Analysis");
 
-            System.out.print("Choose a subject (1-3): ");
+            System.out.print("Choose a subject (1-13): ");
             int choice3 = sc.nextInt();
 
             String selectedSubjects = switch (choice3) {
-                case 1 -> "";
-                case 2 -> "";
-                case 3 -> "";
+                case 1 -> "Specialized English";
+                case 2 -> "Physical Education 1";
+                case 3 -> "Personal and Professional Effectiveness";
+                case 4 -> "Readings in Philippines History";
+                case 5 -> "Science, Technology and Society";
+                case 6 -> "Physical Education 2";
+                case 7 -> "Mathematics in the Modern World";
+                case 8 -> "Analytical Geometry with Calculus";
+                case 9 -> "Art Appreciation";
+                case 10 -> "Physical Education 3";
+                case 11 -> "The Contemporary World";
+                case 12 -> "Applied Statistics for CS";
+                case 13 -> "Mathematical Analysis";
                 default -> {
                     System.out.println("Invalid subject selection.");
                     yield null;
