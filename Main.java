@@ -1,5 +1,6 @@
 // Main File
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -12,30 +13,33 @@ public class Main {
             System.out.println("=====================\n Student Portal \n=====================");
             System.out.println("Choose a system\n1: Registration System\n2: Grading System\n3: GPA Calculator\n4: Course Management\n5: Exit");
             System.out.print(": ");
-
-            int choice = sc.nextInt();
-            sc.nextLine();
-
-            switch (choice) {
-                case 1:
-                    Student student = system.registerStudent();
-                    student.displayStudentInfo();
-                    system.enrollInBlock(student);
-                    break;
-                case 2:
-                    system.gradeSystem();
-                    break;
-                case 3:
-                    system.gpaCalculator();
-                    break;
-                case 4:
-                    system.courseManagement();
-                    break;
-                case 5:
-                    done = true;
-                    break;
-                default:
-                    System.out.println("Invalid Choice, please try again.");
+            try {
+                int choice = sc.nextInt();
+                sc.nextLine();
+                switch (choice) {
+                    case 1:
+                        Student student = system.registerStudent();
+                        student.displayStudentInfo();
+                        system.enrollInBlock(student);
+                        break;
+                    case 2:
+                        system.gradeSystem();
+                        break;
+                    case 3:
+                        system.gpaCalculator();
+                        break;
+                    case 4:
+                        system.courseManagement();
+                        break;
+                    case 5:
+                        done = true;
+                        break;
+                    default:
+                        System.out.println("Invalid Choice, please try again.");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a number.");
+                sc.nextLine();
             }
         } while (!done);
 
