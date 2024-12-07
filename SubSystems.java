@@ -264,37 +264,64 @@ public class SubSystems {
         double totalGradePoints = 0;
         int totalUnits = 0;
 
-        while (true) {
-            System.out.print("Enter course name (or type 'done' to finish): ");
-            String courseName = sc.nextLine();
-            if (courseName.equalsIgnoreCase("done")) break;
+        System.out.println("\n===============================");
+        System.out.println("📊 GPA Calculator");
+        System.out.println("===============================\n");
 
-            System.out.print("Enter number of units for " + courseName + ": ");
-            int units = sc.nextInt();
+        while (true) {
+            System.out.print("📘 Enter course name (or type 'done' to finish): ");
+            String courseName = sc.nextLine();
+            if (courseName.equalsIgnoreCase("done")) {
+                System.out.println("\n✅ Finished entering courses.");
+                break;
+            }
+
+            System.out.print(">> Enter number of units for " + courseName + ": ");
+            int units;
+            while (true) {
+                if (sc.hasNextInt()) {
+                    units = sc.nextInt();
+                    if (units > 0) break;
+                    System.out.print("❌ Units must be a positive integer. Please re-enter: ");
+                } else {
+                    System.out.print("❌ Invalid input. Please enter a number for units: ");
+                    sc.next();
+                }
+            }
 
             double gpa;
-            boolean validGPA = false;
-            do {
-                System.out.print("Enter GPA (valid values: 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0): ");
-                gpa = sc.nextDouble();
-                if (gpa == 0.5 || gpa == 1.0 || gpa == 1.5 || gpa == 2.0 || gpa == 2.5 || gpa == 3.0 || gpa == 3.5 || gpa == 4.0) {
-                    validGPA = true;
+            while (true) {
+                System.out.print("🎓 Enter GPA (valid values: 0.5, 1.0, 1.5, 2.0, 2.5, 3.0, 3.5, 4.0): ");
+                if (sc.hasNextDouble()) {
+                    gpa = sc.nextDouble();
+                    if (gpa == 0.5 || gpa == 1.0 || gpa == 1.5 || gpa == 2.0 || gpa == 2.5 || gpa == 3.0 || gpa == 3.5 || gpa == 4.0) {
+                        break;
+                    } else {
+                        System.out.println("❌ Invalid GPA value. Please enter a valid GPA.");
+                    }
                 } else {
-                    System.out.println("Invalid GPA entered. Please try again.");
+                    System.out.println("❌ Invalid input. Please enter a numeric GPA value.");
+                    sc.next();
                 }
-            } while (!validGPA);
+            }
 
             totalGradePoints += gpa * units;
             totalUnits += units;
             sc.nextLine();
+
+            System.out.println("📌 Successfully added course: " + courseName + " | Units: " + units + " | GPA: " + gpa + "\n");
         }
 
+        System.out.println("\n===============================");
         if (totalUnits > 0) {
             double cgpa = totalGradePoints / totalUnits;
-            System.out.println("Your cumulative GPA (CGPA) is: " + String.format("%.2f", cgpa));
+            System.out.println("🎉 Your cumulative GPA (CGPA) is: " + String.format("%.2f", cgpa));
+            System.out.println("===============================");
+            System.out.println(cgpa >= 2.0 ? "👏 Great job! Keep up the good work!" : "💡 Keep striving for improvement. You got this!");
         } else {
-            System.out.println("No courses were entered.");
+            System.out.println("❌ No courses were entered. GPA calculation aborted.");
         }
+        System.out.println("===============================\n");
     }
 
     public void courseManagement() {
