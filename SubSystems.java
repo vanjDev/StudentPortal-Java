@@ -15,10 +15,10 @@ public class SubSystems {
         String timeSlot;
         String day;
 
-        public Schedule(String courseName, String timeSlot, String day) {
-            this.courseName = courseName;
-            this.timeSlot = timeSlot;
-            this.day = day;
+        public Schedule(String cName, String tSlot, String iDay) {
+            this.courseName = cName;
+            this.timeSlot = tSlot;
+            this.day = iDay;
         }
 
         public void display() {
@@ -40,7 +40,6 @@ public class SubSystems {
             System.out.print("Enter preferred time slot (e.g., 10:00 AM - 12:00 PM): ");
             String timeSlot = sc.nextLine();
 
-            // Check for conflicts
             boolean conflict = false;
             for (Schedule s : schedules) {
                 if (s.day.equalsIgnoreCase(day) && s.timeSlot.equalsIgnoreCase(timeSlot)) {
@@ -229,7 +228,6 @@ public class SubSystems {
                 ? congratulatoryMessages.get(random.nextInt(congratulatoryMessages.size()))
                 : motivationalMessages.get(random.nextInt(motivationalMessages.size()));
 
-        // Enhanced Output
         System.out.println("\n****************************************");
         System.out.println("              📊 FINAL RESULTS           ");
         System.out.println("****************************************");
