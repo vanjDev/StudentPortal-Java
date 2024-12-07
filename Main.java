@@ -15,17 +15,18 @@ public class Main {
             System.out.println("=========================================");
             System.out.println("Choose a system:");
             System.out.println("1️⃣ : Registration System");
-            System.out.println("2️⃣ : Grading System");
+            System.out.println("2️⃣ : View - Registered Students");
             System.out.println("3️⃣ : GPA Calculator");
-            System.out.println("4️⃣ : Course Management");
+            System.out.println("4️⃣ : Term-GPA Calculator");
             System.out.println("5️⃣ : Schedule Management");
-            System.out.println("6️⃣ : Exit");
+            System.out.println("6️⃣ : Course Management");
+            System.out.println("7️⃣ : Exit");
             System.out.print(">> Your Choice: ");
 
-            System.out.print(": ");
             try {
                 int choice = sc.nextInt();
                 sc.nextLine();
+
                 switch (choice) {
                     case 1:
                         Student student = system.registerStudent();
@@ -33,18 +34,21 @@ public class Main {
                         system.enrollInBlock(student);
                         break;
                     case 2:
-                        system.gradeSystem();
+                        system.viewAllStudents();
                         break;
                     case 3:
-                        system.gpaCalculator();
+                        system.gradeSystem();
                         break;
                     case 4:
-                        system.courseManagement();
+                        system.gpaCalculator();
                         break;
                     case 5:
                         system.scheduleManagement();
                         break;
                     case 6:
+                        system.courseManagement();
+                        break;
+                    case 7:
                         done = true;
                         break;
                     default:
@@ -60,3 +64,4 @@ public class Main {
         sc.close();
     }
 }
+
