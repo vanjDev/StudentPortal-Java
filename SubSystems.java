@@ -209,19 +209,17 @@ public class SubSystems {
         Random random = new Random();
 
         List<String> motivationalMessages = List.of(
-                "Don't give up! There’s always a chance to improve!",
-                "Keep pushing forward. Great things take time!",
-                "Every failure is a step closer to success.",
-                "Your journey is just beginning. Never stop trying!",
-                "Remember, success is built on perseverance."
+                "You did your best, failure doesn't define who you are - van !",
+                "You may have failed but its not the end, comeback stronger - kyle",
+                "I know you can do better than that! - John",
+                "Kaya mo yæn! - Veronica"
         );
 
         List<String> congratulatoryMessages = List.of(
-                "🎉 Congratulations! You did an amazing job!",
-                "Great work! Your efforts have paid off! 🎓",
-                "You’ve earned it! Keep reaching for the stars! 🌟",
-                "Well done! Success looks great on you!",
-                "Fantastic performance! Celebrate your achievement! 🎉"
+                "Amazing! Outstanding performance - kyle",
+                "I knew you could do it! - john ",
+                "🎉 Congrats!!, I'm so happy for you - van ",
+                "Magaling, Magaling, Magaling! - Veronica"
         );
 
         String message = (gpa >= 1.0)
