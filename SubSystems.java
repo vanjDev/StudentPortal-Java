@@ -1,14 +1,14 @@
 // All System's
 
-import java.util.Random;
-import java.util.Scanner;
-import java.util.List;
-import java.util.ArrayList;
+import java.util.*;
 
 
 public class SubSystems {
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
+    private List<Student> registeredStudents = new ArrayList<>();
+    boolean did = false;
+
 
     class Schedule {
         String courseName;
@@ -69,21 +69,66 @@ public class SubSystems {
         System.out.println("        🚀 REGISTRATION SYSTEM        ");
         System.out.println("=======================================");
         System.out.println("Please fill in the following details:");
+        
+        if (did == true){
+            sc.nextLine();
+        }else{
+            did = true;
+        }
+
         System.out.print(">> Enter First Name: ");
         String firstName = sc.nextLine();
         System.out.print(">> Enter Last Name: ");
         String lastName = sc.nextLine();
-        System.out.print(">> Enter Age: ");
-        int age = sc.nextInt();
-        sc.nextLine();
+
+        int age;
+        while (true) {
+            try {
+                System.out.print(">> Enter Age: ");
+                age = sc.nextInt();
+                sc.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a valid number for age.");
+                sc.nextLine();
+            }
+        }
         System.out.print(">> Enter Gender: ");
         String gender = sc.nextLine();
         System.out.print(">> Enter Degree Program: ");
         String degreeProgram = sc.nextLine();
-        System.out.print(">> (Input Number) Enter Year Level: ");
-        int yearLevel = sc.nextInt();
 
-        return new Student(firstName, lastName, age, gender, degreeProgram, yearLevel);
+        int yearLevel;
+        while (true) {
+            try {
+                System.out.print(">> (Input Number) Enter Year Level: ");
+                yearLevel = sc.nextInt();
+                sc.nextLine();
+                break;
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid input! Please enter a valid number for the year level.");
+                sc.nextLine();
+            }
+        }
+
+        Student student = new Student(firstName, lastName, age, gender, degreeProgram, yearLevel);
+        registeredStudents.add(student);
+        System.out.println("Student registered successfully!");
+        return student;
+    }
+
+    public void viewAllStudents() {
+        System.out.println("\n=========================================");
+        System.out.println("         📝 REGISTERED STUDENTS         ");
+        System.out.println("=========================================");
+
+        if (registeredStudents.isEmpty()) {
+            System.out.println("No students have been registered yet.");
+        } else {
+            for (Student student : registeredStudents) {
+                student.displayStudentInfo();
+            }
+        }
     }
 
     public void enrollInBlock(Student student) {
