@@ -49,13 +49,17 @@ public class Student {
     }
 
     public void displayStudentInfo() {
-        System.out.println("===== Student Information =====");
-        System.out.println("First Name: " + firstName);
-        System.out.println("Last Name: " + lastName);
-        System.out.println("Age: " + age);
-        System.out.println("Gender: " + gender);
-        System.out.println("Degree Program: " + degreeProgram);
-        System.out.println("Year Level: " + yearLevel);
-        System.out.println("Student Number: " + studentNumber);
+        System.out.println("\n****************************************");
+        System.out.println("          STUDENT INFORMATION           ");
+        System.out.println("****************************************");
+        System.out.printf(">> %-20s: %s\n", "First Name", firstName);
+        System.out.printf(">> %-20s: %s\n", "Last Name", lastName);
+        System.out.printf(">> %-20s: %d\n", "Age", age);
+        System.out.printf(">> %-20s: %s\n", "Gender", gender);
+        System.out.printf(">> %-20s: %s\n", "Degree Program", degreeProgram);
+        System.out.printf(">> %-20s: %d\n", "Year Level", yearLevel);
+        System.out.printf(">> %-20s: %d\n", "Student Number", studentNumber);
+        System.out.println("****************************************\n");
+
     }
 }
