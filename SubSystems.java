@@ -2,25 +2,86 @@
 
 import java.util.Random;
 import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+
 
 public class SubSystems {
     Scanner sc = new Scanner(System.in);
     Random rand = new Random();
 
+    class Schedule {
+        String courseName;
+        String timeSlot;
+        String day;
+
+        public Schedule(String courseName, String timeSlot, String day) {
+            this.courseName = courseName;
+            this.timeSlot = timeSlot;
+            this.day = day;
+        }
+
+        public void display() {
+            System.out.println("Course: " + courseName + ", Time: " + timeSlot + ", Day: " + day);
+        }
+    }
+
+    public void scheduleManagement() {
+        ArrayList<Schedule> schedules = new ArrayList<>();
+
+        while (true) {
+            System.out.print("Enter course name (or type 'done' to finish): ");
+            String courseName = sc.nextLine();
+            if (courseName.equalsIgnoreCase("done")) break;
+
+            System.out.print("Enter preferred day (e.g., Monday): ");
+            String day = sc.nextLine();
+
+            System.out.print("Enter preferred time slot (e.g., 10:00 AM - 12:00 PM): ");
+            String timeSlot = sc.nextLine();
+
+            // Check for conflicts
+            boolean conflict = false;
+            for (Schedule s : schedules) {
+                if (s.day.equalsIgnoreCase(day) && s.timeSlot.equalsIgnoreCase(timeSlot)) {
+                    System.out.println("Conflict detected with course: " + s.courseName);
+                    conflict = true;
+                    break;
+                }
+            }
+
+            if (!conflict) {
+                schedules.add(new Schedule(courseName, timeSlot, day));
+                System.out.println("Course successfully added to your schedule.");
+            } else {
+                System.out.println("Please choose a different time slot.");
+            }
+        }
+
+        System.out.println("\nYour Final Schedule:");
+        for (Schedule s : schedules) {
+            s.display();
+        }
+    }
+
+
     public Student registerStudent() {
-        System.out.println("=====================\n Registration System \n=====================");
-        System.out.print("Enter First Name: ");
+        System.out.println("=======================================");
+        System.out.println("        🚀 REGISTRATION SYSTEM        ");
+        System.out.println("=======================================");
+        System.out.println("Please fill in the following details:");
+        System.out.print(">> Enter First Name: ");
         String firstName = sc.nextLine();
-        System.out.print("Enter Last Name: ");
+        System.out.print(">> Enter Last Name: ");
         String lastName = sc.nextLine();
-        System.out.print("Enter Age: ");
+        System.out.print(">> Enter Age: ");
         int age = sc.nextInt();
         sc.nextLine();
-        System.out.print("Enter Gender: ");
+        System.out.print(">> Enter Gender: ");
         String gender = sc.nextLine();
-        System.out.print("Enter Degree Program: ");
+        System.out.print(">> Enter Degree Program: ");
         String degreeProgram = sc.nextLine();
-        System.out.print("(Input Number) Enter Year Level: ");
+        System.out.print(">> (Input Number) Enter Year Level: ");
         int yearLevel = sc.nextInt();
 
         return new Student(firstName, lastName, age, gender, degreeProgram, yearLevel);
@@ -62,45 +123,142 @@ public class SubSystems {
         }
     }
 
-    public void gradeSystem() {
-        System.out.println("Grading System - Calculate Course Grade");
-        System.out.println("60% Class Standing\n15% Midterm Exam\n25% Final Exam");
 
-        // Input scores
-        System.out.print("Enter Long Quiz 1 (out of 40): ");
-        int lq1 = sc.nextInt();
-        System.out.print("Enter Long Quiz 2 (out of 50): ");
-        int lq2 = sc.nextInt();
-        System.out.print("Enter Seat Work 1 (out of 100): ");
-        int sw1 = sc.nextInt();
-        System.out.print("Enter Seat Work 2 (out of 100): ");
-        int sw2 = sc.nextInt();
-        System.out.print("Enter Midterm Exam (out of 100): ");
-        int me = sc.nextInt();
-        System.out.print("Enter Final Exam (out of 100): ");
-        int fe = sc.nextInt();
+    public void gradeSystem() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\n****************************************");
+        System.out.println("          📚 GRADING SYSTEM             ");
+        System.out.println("****************************************");
+        System.out.println("Grade Calculation Breakdown:");
+        System.out.println("🔸 Class Standing: 60%");
+        System.out.println("🔸 Midterm Exam: 15%");
+        System.out.println("🔸 Final Exam: 25%");
+        System.out.println("****************************************");
+
+        // LongQuiz
+        ArrayList<Integer> longQuizScores = new ArrayList<>();
+        ArrayList<Integer> longQuizTotals = new ArrayList<>();
+        System.out.println("\nEnter Long Quiz Scores:");
+        while (true) {
+            System.out.print(">> Enter [Total Score] for Long Quiz: ");
+            longQuizTotals.add(sc.nextInt());
+            System.out.print(">> Enter Score for Long Quiz: ");
+            longQuizScores.add(sc.nextInt());
+
+            System.out.print("Do you want to add another Long Quiz? (yes/no): ");
+            sc.nextLine();
+            if (!sc.nextLine().equalsIgnoreCase("yes")) break;
+        }
+
+        // Seatworks
+        ArrayList<Integer> seatWorkScores = new ArrayList<>();
+        ArrayList<Integer> seatWorkTotals = new ArrayList<>();
+        System.out.println("\nEnter Seat Work Scores:");
+        while (true) {
+            System.out.print(">> Enter [Total Score] for Seat Work: ");
+            seatWorkTotals.add(sc.nextInt());
+            System.out.print(">> Enter Score for Seat Work: ");
+            seatWorkScores.add(sc.nextInt());
+
+            System.out.print("Do you want to add another Seat Work? (yes/no): ");
+            sc.nextLine();
+            if (!sc.nextLine().equalsIgnoreCase("yes")) break;
+        }
+
+        System.out.print(">> Enter [Total Score] for Midterm Exam: ");
+        int midtermTotal = sc.nextInt();
+        System.out.print("\n>> Enter Score for Midterm Exam: ");
+        int midtermScore = sc.nextInt();
+
+        System.out.print(">> Enter [Total Score] for Final Exam: ");
+        int finalTotal = sc.nextInt();
+        System.out.print(">> Enter Score for Final Exam: ");
+        int finalScore = sc.nextInt();
 
         // Calculations
-        double cs = ((lq1 + lq2) / 90.0 * 0.6 + (sw1 + sw2) / 200.0 * 0.4) * 100 * 0.6;
-        double totalExam = ((me / 100.0) * 0.15 + (fe / 100.0) * 0.25) * 100;
+        double longQuizPercentage = calculatePercentage(longQuizScores, longQuizTotals);
+        double seatWorkPercentage = calculatePercentage(seatWorkScores, seatWorkTotals);
+        double classStanding = (longQuizPercentage * 0.6 + seatWorkPercentage * 0.4) * 0.6;
 
-        double rawScore = cs + totalExam;
+        double midtermPercentage = (midtermScore / (double) midtermTotal) * 100;
+        double finalPercentage = (finalScore / (double) finalTotal) * 100;
+        double totalExam = (midtermPercentage * 0.15 + finalPercentage * 0.25);
+
+        double rawScore = classStanding + totalExam;
+
         int grade = (int) rawScore / 4;
-        double gpa = switch (grade) {
-            case 25, 24 -> 4.0;
-            case 23 -> 3.5;
-            case 22 -> 3.0;
-            case 21 -> 2.5;
-            case 20 -> 2.0;
-            case 19 -> 1.5;
-            case 18 -> 1.0;
-            default -> 0.5;
-        };
+        double gpa;
+        if (rawScore >= 97) {
+            gpa = 4.0;
+        } else if (rawScore >= 93) {
+            gpa = 3.5;
+        } else if (rawScore >= 89) {
+            gpa = 3.0;
+        } else if (rawScore >= 85) {
+            gpa = 2.5;
+        } else if (rawScore >= 80) {
+            gpa = 2.0;
+        } else if (rawScore >= 75) {
+            gpa = 1.5;
+        } else if (rawScore >= 70) {
+            gpa = 1.0;
+        } else {
+            gpa = 0.5;
+        }
 
-        System.out.println("Total Raw Score: " + rawScore);
-        System.out.println("Final Grade (GPA): " + gpa);
-        System.out.println("You " + (gpa >= 1.0 ? "Passed" : "Failed") + " the course.");
+
+        Random random = new Random();
+
+        List<String> motivationalMessages = List.of(
+                "Don't give up! There’s always a chance to improve!",
+                "Keep pushing forward. Great things take time!",
+                "Every failure is a step closer to success.",
+                "Your journey is just beginning. Never stop trying!",
+                "Remember, success is built on perseverance."
+        );
+
+        List<String> congratulatoryMessages = List.of(
+                "🎉 Congratulations! You did an amazing job!",
+                "Great work! Your efforts have paid off! 🎓",
+                "You’ve earned it! Keep reaching for the stars! 🌟",
+                "Well done! Success looks great on you!",
+                "Fantastic performance! Celebrate your achievement! 🎉"
+        );
+
+        String message = (gpa >= 1.0)
+                ? congratulatoryMessages.get(random.nextInt(congratulatoryMessages.size()))
+                : motivationalMessages.get(random.nextInt(motivationalMessages.size()));
+
+        // Enhanced Output
+        System.out.println("\n****************************************");
+        System.out.println("              📊 FINAL RESULTS           ");
+        System.out.println("****************************************");
+        System.out.printf("📘 Class Standing Score: %.2f%%\n", classStanding);
+        System.out.printf("📝 Midterm Exam Score: %.2f%%\n", midtermPercentage);
+        System.out.printf("📕 Final Exam Score: %.2f%%\n", finalPercentage);
+        System.out.println("----------------------------------------");
+        System.out.printf("🏆 Total Exam Score: %.2f%%\n", totalExam);
+        System.out.printf("🎯 Total Raw Score: %.2f%%\n", rawScore);
+        System.out.println("----------------------------------------");
+        System.out.printf("🎓 Final Grade (GPA): %.2f\n", gpa);
+        System.out.println("📢 Status: " + (gpa >= 1.0 ? "✅ Passed" : "❌ Failed"));
+        System.out.println("----------------------------------------");
+        System.out.println(message);
+        System.out.println("****************************************");
     }
+
+    // Calculate Percentage
+    private double calculatePercentage(ArrayList<Integer> scores, ArrayList<Integer> totals) {
+        double totalScore = 0;
+        double totalMaxScore = 0;
+
+        for (int i = 0; i < scores.size(); i++) {
+            totalScore += scores.get(i);
+            totalMaxScore += totals.get(i);
+        }
+        return totalMaxScore > 0 ? (totalScore / totalMaxScore) * 100 : 0;
+    }
+
 
     public void gpaCalculator() {
         double totalGradePoints = 0;
@@ -140,14 +298,15 @@ public class SubSystems {
     }
 
     public void courseManagement() {
-        System.out.println("=====================\n Course Selection \n=====================");
-        System.out.println("Computer Science: ");
-        System.out.println("Available Specialization:");
-        System.out.println("1: Software Engineering");
-        System.out.println("2: Artificial Intelligence");
-        System.out.println("3: Data Science");
+        System.out.println("\n===============================");
+        System.out.println("       🎓 COURSE SELECTION       ");
+        System.out.println("===============================");
+        System.out.println("Available Specializations in Computer Science:");
+        System.out.println("1️⃣: Software Engineering");
+        System.out.println("2️⃣: Artificial Intelligence");
+        System.out.println("3️⃣: Data Science");
 
-        System.out.print("Choose a course (1-3): ");
+        System.out.print("\n>> Choose a specialization (1-3): ");
         int choice = sc.nextInt();
 
         String selectedCourse = switch (choice) {
@@ -155,16 +314,18 @@ public class SubSystems {
             case 2 -> "Artificial Intelligence";
             case 3 -> "Data Science";
             default -> {
-                System.out.println("Invalid course selection.");
+                System.out.println("❌ Invalid specialization selection. Please restart.");
                 yield null;
             }
         };
 
-        System.out.println("1: GED - Subjects");
-        System.out.println("2: CS - Subjects");
-        System.out.println("3: CCS - Subjects");
-
-        System.out.print("Choose a course (1-3): ");
+        System.out.println("\n===============================");
+        System.out.println("      📚 COURSE CATEGORIES      ");
+        System.out.println("===============================");
+        System.out.println("1️⃣: GED - General Education Subjects");
+        System.out.println("2️⃣: CS - Computer Science Subjects");
+        System.out.println("3️⃣: CCS - College of Computer Studies Subjects");
+        System.out.print(">> Choose a course (1-3): ");
         int choice2 = sc.nextInt();
 
         String selectedCategory = switch (choice2) {
@@ -172,7 +333,7 @@ public class SubSystems {
             case 2 -> "CS - Subjects";
             case 3 -> "CCS - Subjects";
             default -> {
-                System.out.println("Invalid Course Category selection.");
+                System.out.println("❌ Invalid category selection. Please restart.");
                 yield null;
             }
         };
@@ -197,7 +358,7 @@ public class SubSystems {
             System.out.println("17: COLLEGE PHYSICS 2 LECTURE");
             System.out.println("18: PURPOSIVE COMMUNICATION");
 
-            System.out.print("Choose a subject (1-13): ");
+            System.out.print(">> Choose a subject (1-13): ");
             int choice3 = sc.nextInt();
 
             String selectedSubjects = switch (choice3) {
@@ -220,7 +381,7 @@ public class SubSystems {
                 case 17 -> "COLLEGE PHYSICS 2 LECTURE";
                 case 18 -> "PURPOSIVE COMMUNICATION";
                 default -> {
-                    System.out.println("Invalid subject selection.");
+                    System.out.println("❌ Invalid subject selection. Please restart.");
                     yield null;
                 }
             };
@@ -256,7 +417,7 @@ public class SubSystems {
             System.out.println("23: CS PROJECT 1");
             System.out.println("24: CS SPECIALIZATION 4 - BUSINESS PROCESS FOR COMPUTING");
 
-            System.out.print("Choose a subject (1-24): ");
+            System.out.print(">> Choose a subject (1-24): ");
             int choice3 = sc.nextInt();
 
             String selectedSubjects = switch (choice3) {
@@ -285,7 +446,7 @@ public class SubSystems {
                 case 23 -> "CS PROJECT 1";
                 case 24 -> "CS SPECIALIZATION 4 - BUSINESS PROCESS FOR COMPUTING";
                 default -> {
-                    System.out.println("Invalid subject selection.");
+                    System.out.println("❌ Invalid subject selection. Please restart.");
                     yield null;
                 }
             };
@@ -307,7 +468,7 @@ public class SubSystems {
             System.out.println("9: APPLICATIONS DEVELOPMENT AND EMERGING TECHNOLOGIES (LEC)");
             System.out.println("10: TECHNOPRENEURSHIP (CCS)");
 
-            System.out.print("Choose a subject (1-6): ");
+            System.out.print(">> Choose a subject (1-6): ");
             int choice3 = sc.nextInt();
 
             String selectedSubjects = switch (choice3) {
@@ -322,12 +483,19 @@ public class SubSystems {
                 case 9 -> "APPLICATIONS DEVELOPMENT AND EMERGING TECHNOLOGIES (LEC)";
                 case 10 -> "TECHNOPRENEURSHIP (CCS)";
                 default -> {
-                    System.out.println("Invalid subject selection.");
+                    System.out.println("❌ Invalid subject selection. Please restart.");
                     yield null;
                 }
             };
 
-            System.out.println("Choosen Subject: "+ selectedSubjects);
+            System.out.println("\n===============================");
+            System.out.println("        ✅ SELECTION SUMMARY        ");
+            System.out.println("===============================");
+            System.out.printf("🛠 Specialization: %s\n", selectedCourse);
+            System.out.printf("📂 Category: %s\n", selectedCategory);
+            System.out.printf("📘 Subject: %s\n", selectedSubjects);
+            System.out.println("===============================");
+            System.out.println("🚀 Ready to start your journey! Good luck!");
             CCS mySubject = new CCS(selectedSubjects, 3);
             mySubject.isCS = true;
             mySubject.show();
