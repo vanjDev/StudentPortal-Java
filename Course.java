@@ -9,8 +9,13 @@ public class Course {
         this.units = units;
     }
 
-    void show(){
-        System.out.println("This is a course!");
+    void show() {
+        System.out.println("\n===============================");
+        System.out.println("📚 Course Information");
+        System.out.println("===============================");
+        System.out.printf("📘 Course Code: %s\n", courseCode);
+        System.out.printf("🔢 Units: %d\n", units);
+        System.out.println("This is a general course.");
     }
 
     public String getCourseCode() {
@@ -28,10 +33,15 @@ class GED extends Course {
     }
 
         @Override
-    void show(){
-            System.out.println("department program: " + department_program);
-        System.out.println("This is GED course, therefore it's accessible to other programs.");
-    }
+        void show() {
+            super.show();
+            System.out.println("===============================");
+            System.out.println("🏫 GED Course Details");
+            System.out.println("===============================");
+            System.out.printf("🔗 Department Program: %s\n", department_program);
+            System.out.println("📖 Note: This is a GED course, accessible to other programs.");
+            System.out.println("===============================");
+        }
 }
 
 class CS extends Course {
@@ -40,15 +50,20 @@ class CS extends Course {
         super(courseCode, units);
     }
     @Override
-    void show(){
-        if (specialization == 1){
-            System.out.println("specialization: Software Engineering");
-        } else if (specialization == 2) {
-            System.out.println("specialization: Artificial Intelligence");
-        } else if (specialization == 3) {
-            System.out.println("specialization: Data Science");
-        }
-        System.out.println("This is CS course, therefore it's only to CS Programs.");
+    void show() {
+        super.show();
+        System.out.println("===============================");
+        System.out.println("💻 CS Course Details");
+        System.out.println("===============================");
+        String specializationName = switch (specialization) {
+            case 1 -> "Software Engineering";
+            case 2 -> "Artificial Intelligence";
+            case 3 -> "Data Science";
+            default -> "Unknown Specialization";
+        };
+        System.out.printf("🔧 Specialization: %s\n", specializationName);
+        System.out.println("📖 Note: This is a CS course, only available to CS programs.");
+        System.out.println("===============================");
     }
 }
 
@@ -59,8 +74,13 @@ class CCS extends Course {
     }
 
     @Override
-    void show(){
-        System.out.println("isCS: " + isCS);
-        System.out.println("This is CCS course, therefore it's accessible to only CS/IT Programs.");
+    void show() {
+        super.show();
+        System.out.println("===============================");
+        System.out.println("🔍 CCS Course Details");
+        System.out.println("===============================");
+        System.out.printf("🔑 CS Program Access: %s\n", isCS ? "Yes" : "No");
+        System.out.println("📖 Note: This is a CCS course, available to CS/IT programs only.");
+        System.out.println("===============================");
     }
 }
