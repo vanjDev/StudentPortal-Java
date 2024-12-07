@@ -238,7 +238,7 @@ public class SubSystems {
         System.out.printf("🏆 Total Exam Score: %.2f%%\n", totalExam);
         System.out.printf("🎯 Total Raw Score: %.2f%%\n", rawScore);
         System.out.println("----------------------------------------");
-        System.out.printf("🎓 Final Grade (GPA): %.2f\n", gpa);
+        System.out.printf("🎓 Final Grade (GPA): %.1f\n", gpa);
         System.out.println("📢 Status: " + (gpa >= 1.0 ? "✅ Passed" : "❌ Failed"));
         System.out.println("----------------------------------------");
         System.out.println(message);
