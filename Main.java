@@ -10,8 +10,18 @@ public class Main {
         boolean done = false;
 
         do {
-            System.out.println("=====================\n Student Portal \n=====================");
-            System.out.println("Choose a system\n1: Registration System\n2: Grading System\n3: GPA Calculator\n4: Course Management\n5: Exit");
+            System.out.println("\n=========================================");
+            System.out.println("         🎓 STUDENT PORTAL MENU        ");
+            System.out.println("=========================================");
+            System.out.println("Choose a system:");
+            System.out.println("1️⃣ : Registration System");
+            System.out.println("2️⃣ : Grading System");
+            System.out.println("3️⃣ : GPA Calculator");
+            System.out.println("4️⃣ : Course Management");
+            System.out.println("5️⃣ : Schedule Management");
+            System.out.println("6️⃣ : Exit");
+            System.out.print(">> Your Choice: ");
+
             System.out.print(": ");
             try {
                 int choice = sc.nextInt();
@@ -32,6 +42,9 @@ public class Main {
                         system.courseManagement();
                         break;
                     case 5:
+                        system.scheduleManagement();
+                        break;
+                    case 6:
                         done = true;
                         break;
                     default:
@@ -41,6 +54,7 @@ public class Main {
                 System.out.println("Invalid input! Please enter a number.");
                 sc.nextLine();
             }
+
         } while (!done);
 
         sc.close();
