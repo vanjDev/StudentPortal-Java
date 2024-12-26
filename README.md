@@ -1,3 +1,3 @@
-# Group Project - OOP
+# Student Portal - Java
 
 ## Group 4
